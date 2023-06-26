@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the disk device name and mount point
-disk_device="/dev/nvme0n1"
+disk_device="/dev/nvme1n1"
 mount_point="/mnt/data"
 
 # Format the disk with the Ext4 file system
