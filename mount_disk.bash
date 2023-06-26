@@ -16,3 +16,4 @@ sudo mount $disk_device $mount_point
 # Add an entry to /etc/fstab for automatic mounting on boot
 echo "$disk_device   $mount_point   ext4   defaults,nofail   0   2" | sudo tee -a /etc/fstab
 
+sudo chown ubuntu:ubuntu /mnt/data
