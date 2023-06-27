@@ -4,7 +4,7 @@ set -eux
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
-apt install -y hwloc mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget aria2
+apt install -y hwloc mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget aria2 awscli
 apt upgrade -y
 
 curl https://sh.rustup.rs -sSf | sh -s -- -y
