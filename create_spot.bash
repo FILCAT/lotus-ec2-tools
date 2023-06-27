@@ -1,22 +1,17 @@
 #!/bin/bash
 set -eux
 
-#!/bin/bash
-
 # Set the necessary variables
 export AWS_REGION='us-west-1' # Change this to the AWS Region you want
-
-#TODO use diff keypair
 export KEY_NAME='mikers-2' # Change this to your EC2 Key Pair name
-
-export INSTANCE_TYPE='t2.micro' # Change this to your preferred instance type
+export INSTANCE_TYPE='i4i.2xlarge' # Change this to your preferred instance type
 export SECURITY_GROUP='sg-0cc4bf7380c6a7dbe'
 export AMI='ami-0f8e81a3da6e2510a'
 
 # Request Spot Instance. The `--query` option extracts the `SpotInstanceRequestId` from the response
 SPOT_INSTANCE_ID=$(aws ec2 request-spot-instances \
     --region "$AWS_REGION" \
-    --spot-price "0.05" \
+    --spot-price "0.85" \
     --instance-count 1 \
     --type "one-time" \
     --launch-specification "{
@@ -29,15 +24,18 @@ SPOT_INSTANCE_ID=$(aws ec2 request-spot-instances \
 # Wait until the Spot Instance is fulfilled
 aws ec2 wait spot-instance-request-fulfilled --region "$AWS_REGION" --spot-instance-request-ids "$SPOT_INSTANCE_ID"
 
-# Get the Instance ID and Public DNS of the newly created Spot Instance
-INSTANCE_DETAILS=$(aws ec2 describe-spot-instance-requests --region "$AWS_REGION" --spot-instance-request-ids "$SPOT_INSTANCE_ID" --query 'SpotInstanceRequests[*].{InstanceId:InstanceId,PublicDnsName:LaunchedAvailabilityZone}' --output text)
-INSTANCE_ID=$(echo $INSTANCE_DETAILS | awk '{print $1}')
-INSTANCE_PUBLIC_DNS=$(echo $INSTANCE_DETAILS | awk '{print $2}')
+# Get the Instance ID of the newly created Spot Instance
+INSTANCE_ID=$(aws ec2 describe-spot-instance-requests --region "$AWS_REGION" --spot-instance-request-ids "$SPOT_INSTANCE_ID" --query 'SpotInstanceRequests[*].InstanceId' --output text)
 
 # Wait until the instance is running
 aws ec2 wait instance-running --region "$AWS_REGION" --instance-ids "$INSTANCE_ID"
 
-# SSH into the instance and run 'echo hello world'
-ssh -i /path/to/your/key.pem ec2-user@$INSTANCE_PUBLIC_DNS 'echo hello world'
+# Get the Public DNS of the newly created Spot Instance
+INSTANCE_PUBLIC_DNS=$(aws ec2 describe-instances --region "$AWS_REGION" --instance-ids "$INSTANCE_ID" --query 'Reservations[].Instances[].PublicDnsName' --output text)
 
+#make sure instance and ssh is up
+sleep 1m
+
+# SSH into the instance and run 'echo hello world'
+ssh -i  ~/Downloads/mikers-2.pem ubuntu@$INSTANCE_PUBLIC_DNS 'echo hello world'
 

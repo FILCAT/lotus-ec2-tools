@@ -3,9 +3,9 @@ set -eux
 
 export LOTUS_PATH=/mnt/data/lotus
 
-#sudo bash setup.bash
-#bash mount_disk.bash
-#bash setup_lotus.bash
+sudo bash setup.bash
+bash mount_disk.bash
+bash setup_lotus.bash
 
 
 bash download_snapshot.bash
