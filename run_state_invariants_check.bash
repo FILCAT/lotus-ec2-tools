@@ -1,23 +1,18 @@
 #!/bin/bash
 set -eux
 
-
+export LOTUS_PATH=/mnt/data/lotus
 ./lotus/lotus daemon --bootstrap=false &
 pid=$!
+sleep 30s
+#todo if needed, loop instead of arbitrary sleep
 
+ParentStateRoot=$(./lotus/lotus chain get-block $(./lotus/lotus chain head | head -n1)|jq '.ParentStateRoot["/"]' | tr -d '"' )
+height=$(./lotus/lotus chain get-block $(./lotus/lotus chain head | head -n1)|jq '.Height')
 
-ParentStateRoot=$(./lotus chain get-block $(./lotus chain head | head -n1)|jq '.ParentStateRoot["/"]' | tr -d '"' )
-height=$(./lotus chain get-block $(./lotus chain head | head -n1)|jq '.Height')
+kill $pid
+sleep 30s
+#todo if needed, loop instead of arbitrary sleep
 
-# Checking if the process has exited and waiting if not
-while kill -0 $pid > /dev/null 2>&1
-do
-  echo "Waiting for the process to end"
-  sleep 1
-done
-echo "Process has ended"
-
-
-
-./lotus-shed check-invariants $ParentStateRoot $height
+./lotus/lotus-shed check-invariants --repo=$LOTUS_PATH "$ParentStateRoot" "$height" | tee check-invariants.out
 
