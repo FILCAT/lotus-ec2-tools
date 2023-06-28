@@ -36,6 +36,9 @@ INSTANCE_PUBLIC_DNS=$(aws ec2 describe-instances --region "$AWS_REGION" --instan
 #make sure instance and ssh is up
 sleep 60
 
-# SSH into the instance and run 'echo hello world'
+# SSH into the instance and run task
 ./setup_server.bash $INSTANCE_PUBLIC_DNS
+
+#terminate instance
+./terminate_instance.bash $INSTANCE_ID
 
