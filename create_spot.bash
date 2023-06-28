@@ -34,7 +34,7 @@ aws ec2 wait instance-running --region "$AWS_REGION" --instance-ids "$INSTANCE_I
 INSTANCE_PUBLIC_DNS=$(aws ec2 describe-instances --region "$AWS_REGION" --instance-ids "$INSTANCE_ID" --query 'Reservations[].Instances[].PublicDnsName' --output text)
 
 #make sure instance and ssh is up
-sleep 1m
+sleep 60
 
 # SSH into the instance and run 'echo hello world'
 ssh -i  ~/Downloads/mikers-2.pem ubuntu@$INSTANCE_PUBLIC_DNS 'echo hello world'
