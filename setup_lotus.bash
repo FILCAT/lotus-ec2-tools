@@ -1,12 +1,13 @@
 #!/bin/bash
 set -eux
 
-cd /mnt/data
+cd /mnt/data/state-invariants-check
 git clone https://github.com/filecoin-project/lotus.git
 cd lotus
 
 # XXX eventually do not need
-git checkout feat/stat-snapshot
+#git checkout feat/stat-snapshot
+git checkout mikers/chore/update-state-invariants
 
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
 export PATH=$PATH:/usr/local/go/bin

@@ -1,8 +1,10 @@
 #!/bin/bash
 set -eux
 
+lotus_dir=/mnt/data/state-invariants-check/lotus
+
 export LOTUS_PATH=/mnt/data/lotus
-./lotus/lotus daemon --bootstrap=false &
+$lotus_dir/lotus daemon --bootstrap=false &
 pid=$!
 sleep 5s
 #todo if needed, loop instead of arbitrary sleep
@@ -14,5 +16,5 @@ kill $pid
 sleep 5s
 #todo if needed, loop instead of arbitrary sleep
 
-./lotus/lotus-shed check-invariants --repo=$LOTUS_PATH "$ParentStateRoot" "$height" | tee check-invariants.out
+$lotus_dir/lotus-shed check-invariants --repo=$LOTUS_PATH "$ParentStateRoot" "$height" | tee check-invariants.out
 
