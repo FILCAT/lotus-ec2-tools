@@ -37,5 +37,5 @@ INSTANCE_PUBLIC_DNS=$(aws ec2 describe-instances --region "$AWS_REGION" --instan
 sleep 60
 
 # SSH into the instance and run 'echo hello world'
-ssh -i  ~/Downloads/mikers-2.pem ubuntu@$INSTANCE_PUBLIC_DNS 'echo hello world'
+./setup_server.bash $INSTANCE_PUBLIC_DNS
 
