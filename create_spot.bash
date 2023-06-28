@@ -40,5 +40,5 @@ sleep 60
 ./setup_server.bash $INSTANCE_PUBLIC_DNS
 
 #terminate instance
-./terminate_instance.bash $INSTANCE_ID
+#./terminate_instance.bash $INSTANCE_ID
 

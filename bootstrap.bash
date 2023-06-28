@@ -15,4 +15,4 @@ bash /mnt/data/state-invariants-check/download_snapshot.bash
 bash /mnt/data/state-invariants-check/import_snapshot.bash
 
 # XXX todo pass this in
-bash /mnt/data/state-invariants-check/run_snapshot_state_summary.bash
+bash /mnt/data/state-invariants-check/run_state_invariants_check.bash
