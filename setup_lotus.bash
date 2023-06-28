@@ -7,7 +7,6 @@ cd lotus
 
 # XXX eventually do not need
 #git checkout feat/stat-snapshot
-git checkout mikers/chore/update-state-invariants
 
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
 export PATH=$PATH:/usr/local/go/bin
