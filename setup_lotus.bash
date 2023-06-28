@@ -13,7 +13,6 @@ export PATH=$PATH:/usr/local/go/bin
 
 mkdir -p /mnt/data/tmp
 export TMPDIR=/mnt/data/tmp
-make calibnet
 
-# XXX change from calibnet
-#make lotus lotus-shed
+make lotus lotus-shed
+#make calibnet
