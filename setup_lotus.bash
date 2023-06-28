@@ -7,6 +7,10 @@ cd lotus
 git checkout feat/stat-snapshot
 
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
+export PATH=$PATH:/usr/local/go/bin
+
+mkdir -p /mnt/data/tmp
+export TMPDIR=/mnt/data/tmp
 make calibnet
 
 # XXX change from calibnet
