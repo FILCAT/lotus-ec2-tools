@@ -4,9 +4,9 @@ set -eux
 # Set the necessary variables
 export AWS_REGION='us-west-1' # Change this to the AWS Region you want
 export KEY_NAME='mikers-2' # Change this to your EC2 Key Pair name
-export INSTANCE_TYPE='r6gd.medium'
+export INSTANCE_TYPE='t3.medium'
 export SECURITY_GROUP='sg-0cc4bf7380c6a7dbe'
-export AMI='ami-07655b4bbf3eb3bd0'
+export AMI='ami-0f8e81a3da6e2510a'
 
 
 # Request On-Demand Instance
