@@ -8,7 +8,6 @@ export INSTANCE_TYPE='t3.medium'
 export SECURITY_GROUP='sg-0cc4bf7380c6a7dbe'
 export AMI='ami-0f8e81a3da6e2510a'
 
-
 # Request On-Demand Instance
 INSTANCE_ID=$(aws ec2 run-instances \
     --region "$AWS_REGION" \
@@ -17,6 +16,7 @@ INSTANCE_ID=$(aws ec2 run-instances \
     --instance-type "$INSTANCE_TYPE" \
     --key-name "$KEY_NAME" \
     --security-group-ids "$SECURITY_GROUP" \
+    --block-device-mappings 'DeviceName=/dev/sda1,Ebs={VolumeSize=100}' \
     --query 'Instances[*].InstanceId' --output text)
 
 # Wait until the instance is running
