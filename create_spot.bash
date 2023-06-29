@@ -8,6 +8,9 @@ export INSTANCE_TYPE='i4i.2xlarge' # Change this to your preferred instance type
 export SECURITY_GROUP='sg-0cc4bf7380c6a7dbe'
 export AMI='ami-0f8e81a3da6e2510a'
 
+INSTANCE_PUBLIC_DNS_FILE=${1:-/dev/stdout}
+
+
 # Request Spot Instance. The `--query` option extracts the `SpotInstanceRequestId` from the response
 SPOT_INSTANCE_ID=$(aws ec2 request-spot-instances \
     --region "$AWS_REGION" \
@@ -39,6 +42,4 @@ sleep 60
 # SSH into the instance and run task
 ./setup_server.bash $INSTANCE_PUBLIC_DNS
 
-#terminate instance
-#./terminate_instance.bash $INSTANCE_ID
-
+echo $INSTANCE_PUBLIC_DNS > $INSTANCE_PUBLIC_DNS_FILE

@@ -13,6 +13,3 @@ sudo bash /mnt/data/state-invariants-check/setup.bash
 bash /mnt/data/state-invariants-check/setup_lotus.bash
 bash /mnt/data/state-invariants-check/download_snapshot.bash
 bash /mnt/data/state-invariants-check/import_snapshot.bash
-
-# XXX todo pass this in
-bash /mnt/data/state-invariants-check/run_state_invariants_check.bash
