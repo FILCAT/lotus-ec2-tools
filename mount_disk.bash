@@ -18,7 +18,9 @@ echo "$disk_device   $mount_point   ext4   defaults,nofail   0   2" | sudo tee -
 
 sudo chown ubuntu:ubuntu /mnt/data
 
+#use 1/10th of disk for swap
+swap_size=$(df /dev/nvme1n1 |tail -n1 | awk '{printf "%d\n", $2/10}')
 
 
 wget https://raw.githubusercontent.com/Cretezy/Swap/master/swap.sh -O swap
-sudo sh swap 100G /mnt/data/swap
+sudo sh swap $swap_size /mnt/data/swap
