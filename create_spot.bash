@@ -9,6 +9,7 @@ export SECURITY_GROUP='sg-0cc4bf7380c6a7dbe'
 export AMI='ami-0f8e81a3da6e2510a'
 
 INSTANCE_PUBLIC_DNS_FILE=${1:-/dev/stdout}
+INSTANCE_ID_FILE=${2:-/dev/stdout}
 
 
 # Request Spot Instance. The `--query` option extracts the `SpotInstanceRequestId` from the response
@@ -43,3 +44,4 @@ sleep 60
 ./setup_server.bash $INSTANCE_PUBLIC_DNS
 
 echo $INSTANCE_PUBLIC_DNS > $INSTANCE_PUBLIC_DNS_FILE
+echo $INSTANCE_ID > $INSTANCE_ID_FILE
