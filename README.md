@@ -9,3 +9,4 @@ to set up the commander node:
 
 Host *
   StrictHostKeyChecking no
+5. `crontab -e` to add the `crontab` file to the crontab
