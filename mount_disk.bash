@@ -20,6 +20,7 @@ sudo chown ubuntu:ubuntu /mnt/data
 
 #use 1/10th of disk for swap
 swap_size=$(df /dev/nvme1n1 |tail -n1 | awk '{printf "%d\n", $2/10}')
+swap_size="100G"
 
 
 wget https://raw.githubusercontent.com/Cretezy/Swap/master/swap.sh -O swap

@@ -1,6 +1,8 @@
 #!/bin/bash
 set -eux
 
+new_file="$1"
+
 lotus_dir=/mnt/data/state-invariants-check/lotus
 lotus_command=$lotus_dir/lotus
 
@@ -17,5 +19,4 @@ kill $pid
 sleep 5s
 #todo if needed, loop instead of arbitrary sleep
 
-$lotus_dir/lotus-shed check-invariants --repo=$LOTUS_PATH "$ParentStateRoot" "$height" | tee check-invariants.out
-
+$lotus_dir/lotus-shed check-invariants --repo=$LOTUS_PATH "$ParentStateRoot" "$height" | tee /mnt/data/$new_file
