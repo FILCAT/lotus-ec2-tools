@@ -25,3 +25,6 @@ swap_size="100G"
 
 wget https://raw.githubusercontent.com/Cretezy/Swap/master/swap.sh -O swap
 sudo sh swap $swap_size /mnt/data/swap
+
+sudo mkdir -p /mnt/data/logs/lotus/
+
