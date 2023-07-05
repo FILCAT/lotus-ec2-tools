@@ -1,0 +1,16 @@
+[Unit]
+Description=Filecoin Lotus Daemon
+After=network.target
+
+[Service]
+Environment="LOTUS_PATH=/mnt/data/lotus"
+ExecStart=/mnt/data/state-invariants-check/lotus daemon
+WorkingDirectory=/mnt/data/state-invariants-check/lotus
+StandardOutput=append:/mnt/data/logs/lotus/log-file.log
+StandardError=append:/mnt/data/logs/lotus/log-file.log
+Restart=always
+User=ubuntu
+
+[Install]
+WantedBy=default.target
+
