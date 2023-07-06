@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lotus State Usage Summary</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .chart {
+      margin-bottom: 40px;
+      height: 800px;
+
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Lotus State Usage Summary</h1>
+
+    <div id="chartsContainer" class="chart"></div>
+  </div>
+
+  <script>
+    var snapshotData = /* JSON data for snapshot */;
+
+    // Iterate over each snapshot and create a treemap chart
+    for (var title in snapshotData) {
+      var data = snapshotData[title];
+
+      // Extract the necessary data from the snapshot data
+      var parents = [];
+      var names = [];
+      var values = [];
+
+      for (var key in data) {
+        var path = key;
+        var name = key;
+        var parent = path.substring(0, path.lastIndexOf('/'));
+        if (key === '/') {
+          parent = '';
+        }
+        var stats = data[key];
+        parents.push(parent);
+        names.push(name);
+        values.push(stats['Size']);
+      }
+
+      var chartId = 'chart-' + title.toLowerCase().replace(/ /g, '-');
+
+      // Create the treemap chart using Plotly.js
+      var layout = {
+        title: title 
+      };
+
+      var trace = {
+        type: 'treemap',
+        labels: names,
+        parents: parents,
+        values: values
+      };
+
+      var config = {
+        responsive: true
+      };
+
+      var chartData = [trace];
+
+      // Create a new div element for each chart
+      var chartDiv = document.createElement('div');
+      chartDiv.setAttribute('id', chartId);
+      chartDiv.classList.add('chart');
+
+      // Append the chart div to the container
+      var chartsContainer = document.getElementById('chartsContainer');
+      chartsContainer.appendChild(chartDiv);
+
+      Plotly.newPlot(chartId, chartData, layout, config);
+    }
+  </script>
+</body>
+</html>

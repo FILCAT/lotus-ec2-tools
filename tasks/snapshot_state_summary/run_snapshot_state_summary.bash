@@ -2,6 +2,7 @@
 set -eux
 
 #Temporyary until branch is merged merge:
+(
 cd /mnt/data/state-invariants-check/lotus/
 git checkout feat/stat-snapshot
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
@@ -10,6 +11,7 @@ mkdir -p /mnt/data/tmp
 export TMPDIR=/mnt/data/tmp
 rm -rf /home/ubuntu/.cache/*
 make lotus lotus-shed
+) > /dev/null
 
 
 export LOTUS_PATH=/mnt/data/lotus
