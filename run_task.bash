@@ -14,6 +14,6 @@ INSTANCE_ID="$(cat $INSTANCE_ID_FILE)"
 bash ./tasks/"$task_name"/run.bash "$INSTANCE_PUBLIC_DNS"
 
 #terminate instance
-./terminate_instance.bash $INSTANCE_ID
+./util/terminate_instance.bash $INSTANCE_ID
 
 rm -rf $INSTANCE_PUBLIC_DNS_FILE $INSTANCE_ID
