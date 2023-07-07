@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Lotus State Usage Summary</title>
+  <title>Filecoin State Usage Summary</title>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <style>
     body {
@@ -29,7 +29,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Lotus State Usage Summary</h1>
+    <h1>Filecoin State Usage Summary</h1>
 
     <div id="chartsContainer" class="chart"></div>
   </div>
@@ -45,7 +45,9 @@
       var parents = [];
       var names = [];
       var values = [];
+      var percentages = [];
 
+      var totalValue = 0;
       for (var key in data) {
         var path = key;
         var name = key;
@@ -54,23 +56,35 @@
           parent = '';
         }
         var stats = data[key];
+        var value = stats['Size'];
+        totalValue += value;
         parents.push(parent);
         names.push(name);
-        values.push(stats['Size']);
+        values.push(value);
+      }
+
+      // Calculate percentages
+      for (var i = 0; i < values.length; i++) {
+        var percentage = ((values[i] / totalValue) * 100).toFixed(2) + '%';
+        percentages.push(percentage);
       }
 
       var chartId = 'chart-' + title.toLowerCase().replace(/ /g, '-');
 
       // Create the treemap chart using Plotly.js
       var layout = {
-        title: title 
+        title: title + ' - Treemap Chart'
       };
 
       var trace = {
         type: 'treemap',
         labels: names,
         parents: parents,
-        values: values
+        values: values,
+        text: percentages,  // Add percentages as text
+        hovertemplate: '<b>%{label}</b><br><br>' +
+                       'Value: %{value}<br>' +
+                       'Percentage: %{text}<br>'
       };
 
       var config = {
