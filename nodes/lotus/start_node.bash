@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eux
 
-dir=/mnt/data/state-invariants-check/nodes/lotus
+dir=/mnt/data/lotus-ec2-tools/nodes/lotus
 
 sudo cp $dir/lotus.service /etc/systemd/system/
 

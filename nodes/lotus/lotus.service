@@ -4,8 +4,8 @@ After=network.target
 
 [Service]
 Environment="LOTUS_PATH=/mnt/data/lotus"
-ExecStart=/mnt/data/state-invariants-check/lotus/lotus daemon
-WorkingDirectory=/mnt/data/state-invariants-check/lotus
+ExecStart=/mnt/data/lotus-ec2-tools/lotus/lotus daemon
+WorkingDirectory=/mnt/data/lotus-ec2-tools/lotus
 StandardOutput=append:/mnt/data/logs/lotus/log-file.log
 StandardError=append:/mnt/data/logs/lotus/log-file.log
 Restart=always

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eux
 
-cd /mnt/data/state-invariants-check
+cd /mnt/data/lotus-ec2-tools
 git clone https://github.com/filecoin-project/lotus.git
 cd lotus
 

@@ -1,4 +1,4 @@
-# state-invariants-check
+# lotus-ec2-tools
 
 to set up the commander node:
 

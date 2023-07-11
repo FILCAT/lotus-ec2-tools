@@ -1,2 +1,2 @@
-0 12 * * 0 /mnt/data/state-invariants-check/run_task.bash snapshot_state_summary  
-0 12 * * 0 /mnt/data/state-invariants-check/run_task.bash state_invariants_check
+0 12 * * 0 /mnt/data/lotus-ec2-tools/run_task.bash snapshot_state_summary  
+0 12 * * 0 /mnt/data/lotus-ec2-tools/run_task.bash state_invariants_check

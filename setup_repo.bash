@@ -2,5 +2,5 @@
 set -eux
 
 cd /mnt/data/
-git clone https://github.com/snissn/state-invariants-check.git
+git clone https://github.com/snissn/lotus-ec2-tools.git
 

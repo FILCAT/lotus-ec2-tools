@@ -7,9 +7,9 @@ sudo apt install -y git
 bash mount_disk.bash
 
 cd /mnt/data/
-git clone https://github.com/snissn/state-invariants-check.git
+git clone https://github.com/snissn/lotus-ec2-tools.git
 
-sudo bash /mnt/data/state-invariants-check/setup.bash
-bash /mnt/data/state-invariants-check/setup_lotus.bash
-bash /mnt/data/state-invariants-check/download_snapshot.bash
-bash /mnt/data/state-invariants-check/import_snapshot.bash
+sudo bash /mnt/data/lotus-ec2-tools/setup.bash
+bash /mnt/data/lotus-ec2-tools/setup_lotus.bash
+bash /mnt/data/lotus-ec2-tools/download_snapshot.bash
+bash /mnt/data/lotus-ec2-tools/import_snapshot.bash
