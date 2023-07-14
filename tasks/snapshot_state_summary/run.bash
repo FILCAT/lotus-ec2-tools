@@ -15,6 +15,6 @@ ipfs_hash=$(ipfs add -q index.html)
 
 slack_file=$(mktemp)
 echo "A new Filecoin State Usage Summary is available: https://ipfs.io/ipfs/$ipfs_hash" >  $slack_file
-python3 /mnt/lotus-ec2-tools/slack/format_for_slack.py $new_file >  $slack_file
-curl -X POST -H 'Content-type: application/json' -d @$slack_file $SLACK_HOOK_URL
+python3 /mnt/lotus-ec2-tools/slack/format_for_slack.py /mnt/lotus-ec2-tools/tasks/snapshot_state_summary/data/$new_file >  $slack_file
+curl -X POST -H 'Content-type: application/json' -d @$slack_file $SLACK_HOOK_URL_snapshot_state_summary
 rm -rf $slack_file
