@@ -1,6 +1,6 @@
 #!/bin/bash
 set -eux
 
-cd /mnt/data/
-git clone https://github.com/snissn/lotus-ec2-tools.git
+cd /mnt/
+git clone https://github.com/FILCAT/lotus-ec2-tools.git
 

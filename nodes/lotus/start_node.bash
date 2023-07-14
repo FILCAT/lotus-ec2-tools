@@ -1,7 +1,9 @@
 #!/bin/bash
 set -eux
 
-dir=/mnt/data/lotus-ec2-tools/nodes/lotus
+sudo mkdir -p /mnt/logs/lotus/
+
+dir=/mnt/lotus-ec2-tools/nodes/lotus
 
 sudo cp $dir/lotus.service /etc/systemd/system/
 

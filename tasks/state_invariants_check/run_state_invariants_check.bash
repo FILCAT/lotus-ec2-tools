@@ -3,10 +3,10 @@ set -eux
 
 new_file="$1"
 
-lotus_dir=/mnt/data/lotus-ec2-tools/lotus
+lotus_dir=/mnt/lotus
 lotus_command=$lotus_dir/lotus
 
-export LOTUS_PATH=/mnt/data/lotus
+export LOTUS_PATH=/mnt/lotus-data
 $lotus_dir/lotus daemon --bootstrap=false &
 pid=$!
 sleep 5s
@@ -19,4 +19,4 @@ kill $pid
 sleep 5s
 #todo if needed, loop instead of arbitrary sleep
 
-$lotus_dir/lotus-shed check-invariants --repo=$LOTUS_PATH "$ParentStateRoot" "$height" | tee /mnt/data/$new_file
+$lotus_dir/lotus-shed check-invariants --repo=$LOTUS_PATH "$ParentStateRoot" "$height" | tee /mnt/$new_file

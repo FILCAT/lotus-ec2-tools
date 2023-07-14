@@ -13,7 +13,7 @@ def is_valid_json(data):
         return False
 
 # List all files in a folder
-folder_path = "/mnt/data/lotus-ec2-tools/tasks/snapshot_state_summary/data"
+folder_path = "/mnt/lotus-ec2-tools/tasks/snapshot_state_summary/data"
 file_dict = {}
 
 

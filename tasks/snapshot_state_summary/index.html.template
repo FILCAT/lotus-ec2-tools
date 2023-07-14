@@ -37,8 +37,18 @@
   <script>
     var snapshotData = /* JSON data for snapshot */;
 
+      // Convert the object to an array of key-value pairs
+  const snapshotArray = Object.entries(snapshotData);
+
+  // Sort the array based on the date strings
+  snapshotArray.sort((a, b) => b[0].localeCompare(a[0]));
+
+
+  // Iterate over the sorted array
     // Iterate over each snapshot and create a treemap chart
-    for (var title in snapshotData) {
+  snapshotArray.forEach(([title, data]) => {
+
+
       var data = snapshotData[title];
 
       // Extract the necessary data from the snapshot data
@@ -103,7 +113,7 @@
       chartsContainer.appendChild(chartDiv);
 
       Plotly.newPlot(chartId, chartData, layout, config);
-    }
+    })
   </script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 import sys
 import json
 
-#only read first 60k bytes to fit in slack
+#only read first 1.60k bytes to fit in slack
 def read_file(filename):
     with open(filename, 'r') as file:
         return file.read()[:1600]
