@@ -41,7 +41,7 @@ INSTANCE_PUBLIC_DNS=$(aws ec2 describe-instances --region "$AWS_REGION" --instan
 sleep 60
 
 # SSH into the instance and run task
-./setup_server.bash $INSTANCE_PUBLIC_DNS
+/mnt/lotus-ec2-tools/setup_server.bash $INSTANCE_PUBLIC_DNS
 
 echo $INSTANCE_PUBLIC_DNS > $INSTANCE_PUBLIC_DNS_FILE
 echo $INSTANCE_ID > $INSTANCE_ID_FILE
