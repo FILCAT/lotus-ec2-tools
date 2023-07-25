@@ -1,22 +1,3 @@
-# lotus-ec2-tools
-
-to set up the commander node:
-
-1. in ec2 run create_instance.bash
-2. on the new node run aws configure
-3. set up pem in ~/.ssh/aws.pem
-4. add following to ~/.ssh/config:
-```
-Host *
-  StrictHostKeyChecking no
-```
-5. `crontab -e` to add the `crontab` file to the crontab
-
-
-To run a task like the snapshot state summary run the command:
-
-./run_task.bash snapshot_state_summary
-
 ---
 
 # Tutorial: Using the `add_task.sh` script
@@ -39,8 +20,6 @@ cd ~/dev/FILCAT/lotus-ec2-tools/tasks
 ```bash
 bash add_task.sh
 ```
-
-At this point, you might encounter a warning about missing version information for `libtinfo.so.6`. You can ignore this warning for now; it's not critical to the task creation process.
 
 **Step 3:** The script will prompt you to enter a task name. Enter a name for your task, such as `profile_message_execution`, and press `Enter`.
 
@@ -74,4 +53,23 @@ bash run.bash <INSTANCE_PUBLIC_DNS> <task_name>
 The `run.bash` script will ssh into your EC2 instance, execute the `run_task.bash` script there, and store the output in a file on your local machine.
 
 ---
+
+# lotus-ec2-tools
+
+to set up the commander node:
+
+1. in ec2 run create_instance.bash
+2. on the new node run aws configure
+3. set up pem in ~/.ssh/aws.pem
+4. add following to ~/.ssh/config:
+```
+Host *
+  StrictHostKeyChecking no
+```
+5. `crontab -e` to add the `crontab` file to the crontab
+
+
+To run a task like the snapshot state summary run the command:
+
+./run_task.bash snapshot_state_summary
 
