@@ -11,7 +11,7 @@ INSTANCE_ID_FILE=$(mktemp)
 INSTANCE_PUBLIC_DNS="$(cat $INSTANCE_PUBLIC_DNS_FILE)"
 INSTANCE_ID="$(cat $INSTANCE_ID_FILE)"
 
-bash /mnt/lotus-ec2-tools/tasks/"$task_name"/run.bash "$INSTANCE_PUBLIC_DNS"
+bash /mnt/lotus-ec2-tools/tasks/"$task_name"/run.bash "$INSTANCE_PUBLIC_DNS" "$task_name"
 
 #terminate instance
 /mnt/lotus-ec2-tools/ec2/terminate_instance.bash $INSTANCE_ID
