@@ -5,7 +5,7 @@ export LOTUS_PATH=/mnt/lotus-data
 # we have just synced the chain, now we are behind and will be catching up
 # profile the next ten minutes of cpu time
 # (ten minutes was chosen a balance of not taking too long and getting enough consistent data)
-timeout 10m  ./lotus daemon   --pprof pprof.out || true
+timeout 10m  /mnt/lotus/lotus daemon   --pprof pprof.out || true
 
 # could add more focus areas here if req'd
 go tool pprof -svg -focus=ApplyMessage -relative_percentages pprof.out
