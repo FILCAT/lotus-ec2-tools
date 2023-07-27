@@ -17,5 +17,10 @@ mkdir -p $new_dir_full
 
 scp -i  ~/.ssh/aws.pem  ubuntu@$INSTANCE_PUBLIC_DNS:profile001.svg $new_dir_full/profile001.svg
 scp -i  ~/.ssh/aws.pem  ubuntu@$INSTANCE_PUBLIC_DNS:profile002.svg $new_dir_full/profile002.svg
-scp -i  ~/.ssh/aws.pem  ubuntu@$INSTANCE_PUBLIC_DNS:profile001.svg $new_dir_full/ApplyMessage.txt
-scp -i  ~/.ssh/aws.pem  ubuntu@$INSTANCE_PUBLIC_DNS:profile002.svg $new_dir_full/RelativePercentages.txt
+scp -i  ~/.ssh/aws.pem  ubuntu@$INSTANCE_PUBLIC_DNS:ApplyMessage.txt $new_dir_full/ApplyMessage.txt
+scp -i  ~/.ssh/aws.pem  ubuntu@$INSTANCE_PUBLIC_DNS:RelativePercentages.txt $new_dir_full/RelativePercentages.txt
+
+(
+cd $new_dir_full
+bash /mnt/lotus-ec2-tools/tasks/${task_name}/build_html.sh
+)
