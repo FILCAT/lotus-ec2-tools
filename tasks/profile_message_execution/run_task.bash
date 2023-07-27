@@ -5,11 +5,18 @@ export LOTUS_PATH=/mnt/lotus-data
 # we have just synced the chain, now we are behind and will be catching up
 # profile the next ten minutes of cpu time
 # (ten minutes was chosen a balance of not taking too long and getting enough consistent data)
-timeout 10m  ./lotus daemon   --pprof pprof.out
+timeout 10m  ./lotus daemon   --pprof pprof.out || true
 
 # could add more focus areas here if req'd
 go tool pprof -svg -focus=ApplyMessage -relative_percentages pprof.out
 go tool pprof -svg -nodecount=500 -relative_percentages pprof.out
+echo "list ApplyMessage" | go tool pprof pprof.out > ApplyMessage.txt
+go tool pprof -focus=ApplyMessage -top -relative_percentages pprof.out  > RelativePercentages.txt
+
+
 # this creates files
-# profile001.svg  and
-# profile002.svg which we will scp over
+# profile001.svg
+# profile002.svg
+# ApplyMessage.txt
+# RelativePercentages.txt
+# which we will scp over
