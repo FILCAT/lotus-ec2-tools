@@ -7,6 +7,9 @@ export LOTUS_PATH=/mnt/lotus-data
 # (ten minutes was chosen a balance of not taking too long and getting enough consistent data)
 timeout 10m  /mnt/lotus/lotus daemon   --pprof pprof.out || true
 
+
+#see if this fixes problem
+export PATH=$PATH:/usr/local/go/bin
 # could add more focus areas here if req'd
 go tool pprof -svg -focus=ApplyMessage -relative_percentages pprof.out
 go tool pprof -svg -nodecount=500 -relative_percentages pprof.out
