@@ -1,4 +1,5 @@
 #!/bash
+set +x
 
 echo "<!DOCTYPE html>
 <html>

@@ -7,6 +7,8 @@ export LOTUS_PATH=/mnt/lotus-data
 # (ten minutes was chosen a balance of not taking too long and getting enough consistent data)
 timeout 10m  /mnt/lotus/lotus daemon   --pprof pprof.out || true
 
+#make sure lotus exits
+sleep 2m
 
 #see if this fixes problem
 export PATH=$PATH:/usr/local/go/bin
