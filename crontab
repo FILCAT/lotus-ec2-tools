@@ -1,2 +1,3 @@
 0 12 * * 0 /mnt/lotus-ec2-tools/run_task.bash snapshot_state_summary  
 0 12 * * 0 /mnt/lotus-ec2-tools/run_task.bash state_invariants_check
+0 12 * * 0 /mnt/lotus-ec2-tools/run_task.bash profile_message_execution

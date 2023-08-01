@@ -29,5 +29,5 @@ bash /mnt/lotus-ec2-tools/tasks/${task_name}/build_html.sh
 ipfs_hash=$(ipfs add -q $new_dir_full/index.html)
 slack_file=$(mktemp)
 python3 /mnt/lotus-ec2-tools/slack/format_for_slack.py <(echo "A new Lotus Profiling Report on Message Execution is available: https://ipfs.io/ipfs/$ipfs_hash" ) >  $slack_file
-curl -X POST -H 'Content-type: application/json' -d @$slack_file $SLACK_HOOK_URL
+curl -X POST -H 'Content-type: application/json' -d @$slack_file $SLACK_HOOK_URL_snapshot_state_summary
 rm -rf $slack_file
