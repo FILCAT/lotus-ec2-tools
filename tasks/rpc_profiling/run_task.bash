@@ -3,6 +3,8 @@ set -eux
 export LOTUS_PATH=/mnt/lotus-data
 lotus_dir=/mnt/lotus
 
+#todo bootstrap=false isn't totally correct, we should fully sync and then run tests while it is continuing to sync
+#such will match production
 $lotus_dir/lotus daemon --bootstrap=false &
 pid=$!
 sleep 5s
@@ -10,10 +12,6 @@ sleep 5s
 
 # Address to use for testing methods requiring an Ethereum address
 ETH_ADDRESS="0xd4c70007F3F502f212c7e6794b94C06F36173B36"
-
-# Build lotus-bench
-echo "Building lotus-bench..."
-make lotus-bench
 
 # Define the Ethereum methods to test
 eth_methods=(
@@ -72,3 +70,4 @@ done
 
 echo "Test suite completed."
 
+kill $pid
