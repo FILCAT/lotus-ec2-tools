@@ -13,8 +13,8 @@ sleep 2m
 #see if this fixes problem
 export PATH=$PATH:/usr/local/go/bin
 # could add more focus areas here if req'd
-go tool pprof -svg -focus=ApplyMessage -relative_percentages pprof.out
-go tool pprof -svg -nodecount=500 -relative_percentages pprof.out
+go tool pprof -svg -focus=ApplyMessage -relative_percentages pprof.out > profile001.svg
+go tool pprof -svg -nodecount=500 -relative_percentages pprof.out > profile002.svg
 echo "list ApplyMessage" | go tool pprof pprof.out > ApplyMessage.txt
 go tool pprof -focus=ApplyMessage -top -relative_percentages pprof.out  > RelativePercentages.txt
 
