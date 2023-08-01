@@ -10,5 +10,5 @@ export PATH=$PATH:/usr/local/go/bin
 
 mkdir -p /mnt/tmp
 export TMPDIR=/mnt/tmp
-make lotus lotus-shed
+make lotus lotus-shed lotus-bench
 #make calibnet
