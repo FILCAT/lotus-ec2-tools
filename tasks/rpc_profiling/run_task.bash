@@ -3,9 +3,17 @@ set -eux
 export LOTUS_PATH=/mnt/lotus-data
 lotus_dir=/mnt/lotus
 
-#todo bootstrap=false isn't totally correct, we should fully sync and then run tests while it is continuing to sync
-#such will match production
-$lotus_dir/lotus daemon --bootstrap=false &
+
+#set fevm rpc = true in lotus config
+sed -i 's/^[[:space:]]*#*[[:space:]]*EnableEthRPC[[:space:]]*=[[:space:]]*false/  EnableEthRPC = true/gI' $LOTUS_PATH/config.toml
+
+
+#todo/note this isn't totally correct, we could fully sync and then run tests while it is continuing to sync in a normal way
+#such that will match production. however, here what we are doing is starting up a somewhat behind lotus node
+#such that lotus is syncing as fast as it can to the current network head, however in practice there would be less syncing
+#this is potentially more helpful in that it somewhat unfairly gives weight to network message processing over rpc commands
+#so this is a more pessimistic case than normal production
+$lotus_dir/lotus daemon &
 pid=$!
 sleep 5s
 
