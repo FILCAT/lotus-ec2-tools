@@ -6,6 +6,7 @@ lotus_dir=/mnt/lotus
 
 #set fevm rpc = true in lotus config
 sed -i 's/^[[:space:]]*#*[[:space:]]*EnableEthRPC[[:space:]]*=[[:space:]]*false/  EnableEthRPC = true/gI' $LOTUS_PATH/config.toml
+sed -i 's/^[[:space:]]*#*[[:space:]]*ListenAddress[[:space:]]*=[[:space:]]*\/ip4\/127.0.0.1\/tcp\/1234\/http/ListenAddress = "\/ip4\/127.0.0.1\/tcp\/1234\/http"/gI' $LOTUS_PATH/config.toml
 
 
 #todo/note this isn't totally correct, we could fully sync and then run tests while it is continuing to sync in a normal way
