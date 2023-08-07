@@ -1,3 +1,19 @@
+
+# Configuration
+
+## Set deploy configurations as environment variables
+
+- use LOTUS_GIT_BRANCH to set what git branch to use for lotus
+- use INSTANCE_TYPE to set what instance type to use
+
+
+The defaults are: 
+
+```
+LOTUS_GIT_BRANCH=master INSTANCE_TYPE='i4i.2xlarge' ./run_task.sh TASKNAME
+```
+
+
 # Tutorial: Using the `add_task.sh` script
 
 ## Prerequisites
