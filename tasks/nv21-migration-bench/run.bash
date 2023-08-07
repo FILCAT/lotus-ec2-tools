@@ -8,7 +8,7 @@ task_name="nv21-migration-bench"
 mkdir -p /mnt/lotus-ec2-tools/tasks/$task_name/data/
 
 new_file="${task_name}-`date +"%Y-%m-%d-%H-%M-%S"`.out"
-ssh -i  ~/.ssh/aws.pem  ubuntu@$INSTANCE_PUBLIC_DNS bash /mnt/lotus-ec2-tools/tasks/${task_name}/run_task.bash $new_file
+ssh -i  ~/.ssh/aws.pem   -o SendEnv=EnvMigrationMaxWorkerCount ubuntu@$INSTANCE_PUBLIC_DNS bash /mnt/lotus-ec2-tools/tasks/${task_name}/run_task.bash $new_file
 scp -i  ~/.ssh/aws.pem  ubuntu@$INSTANCE_PUBLIC_DNS:/mnt/$new_file /mnt/lotus-ec2-tools/tasks/${task_name}/data/$new_file
 
 
@@ -17,6 +17,9 @@ echo "Ec2 Instance Type - "$INSTANCE_TYPE >> /mnt/lotus-ec2-tools/tasks/${task_n
 
 BRANCH=${LOTUS_GIT_BRANCH:-master}
 echo "lotus branch - "$BRANCH >> /mnt/lotus-ec2-tools/tasks/${task_name}/data/$new_file
+
+worker_count=${EnvMigrationMaxWorkerCount:-num-cpus}
+echo "worker count - "$worker_count >> /mnt/lotus-ec2-tools/tasks/${task_name}/data/$new_file
 
 #ping slack
 slack_file=$(mktemp)
