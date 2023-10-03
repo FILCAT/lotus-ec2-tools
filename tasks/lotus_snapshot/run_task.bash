@@ -10,5 +10,9 @@ timeout 10m  /mnt/lotus/lotus daemon   --pprof pprof.out || true
 #make sure lotus exits
 sleep 2m
 
+#make sure lotus starts
+/mnt/lotus/lotus daemon --bootstrap=false &
+sleep 2m
+
 /mnt/lotus/lotus chain export --recent-stateroots=1 --skip-old-msgs |pv> /mnt/lotus-data/chain_snapshot.car
 
