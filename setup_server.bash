@@ -18,4 +18,4 @@ if [[ -n $SNAPSHOT_PATH ]]; then
   scp -i  ~/.ssh/aws.pem $SNAPSHOT_PATH ubuntu@$INSTANCE_PUBLIC_DNS:/mnt/
 fi
 
-ssh -o SendEnv="LOTUS_GIT_BRANCH LOTUS_GOMAP_STORE" -i ~/.ssh/aws.pem ubuntu@$INSTANCE_PUBLIC_DNS bash bootstrap.bash
+ssh -o SendEnv="LOTUS_GIT_BRANCH LOTUS_GOMAP_STORE LOTUS_NETWORK" -i ~/.ssh/aws.pem ubuntu@$INSTANCE_PUBLIC_DNS bash bootstrap.bash

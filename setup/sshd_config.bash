@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Declare an array of environment variables
-declare -a ENV_VARS=("LOTUS_GIT_BRANCH" "INSTANCE_TYPE" "EnvMigrationMaxWorkerCount" "LOTUS_GOMAP_STORE")
+declare -a ENV_VARS=("LOTUS_GIT_BRANCH" "INSTANCE_TYPE" "EnvMigrationMaxWorkerCount" "LOTUS_GOMAP_STORE" "LOTUS_NETWORK")
 
 for ENV_VAR in "${ENV_VARS[@]}"; do
     # Check if the variable is already in sshd_config
