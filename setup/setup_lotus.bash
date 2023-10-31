@@ -7,6 +7,7 @@ cd lotus
 
 BRANCH=${LOTUS_GIT_BRANCH:-master}
 git switch $BRANCH
+git submodule update
 
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
 export PATH=$PATH:/usr/local/go/bin

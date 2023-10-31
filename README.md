@@ -11,25 +11,25 @@
 The defaults are: 
 
 ```
-LOTUS_NETWORK=mainnet LOTUS_GIT_BRANCH=master INSTANCE_TYPE='i4i.2xlarge' ./run_task.sh TASKNAME
+LOTUS_NETWORK=mainnet LOTUS_GIT_BRANCH=master INSTANCE_TYPE='i4i.2xlarge' ./run_task.bash TASKNAME
 ```
 
 this would be equvalent to:
 
 ```
-./run_task.sh TASKNAME
+./run_task.bash TASKNAME
 ```
 
 a non standard usage of the args to test state invariants on calibnet would be:
 
 ```
-LOTUS_NETWORK=calibnet LOTUS_GIT_BRANCH=asr/unbork-calibnet ./run_task.sh state_invariants_check
+LOTUS_NETWORK=calibnet LOTUS_GIT_BRANCH=asr/unbork-calibnet ./run_task.bash state_invariants_check
 ```
 
 running a script to create a dump file using lotus using a very large machine:
 
 ```
-LOTUS_GIT_BRANCH=my/dev/branch INSTANCE_TYPE='i4i.16xlarge' ./run_task.sh lotus_snapshot
+LOTUS_GIT_BRANCH=my/dev/branch INSTANCE_TYPE='i4i.16xlarge' ./run_task.bash lotus_snapshot
 ```
 
 
