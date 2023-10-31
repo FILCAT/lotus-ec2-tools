@@ -5,13 +5,34 @@
 
 - use LOTUS_GIT_BRANCH to set what git branch to use for lotus
 - use INSTANCE_TYPE to set what instance type to use
+- use LOTUS_NETWORK with either calibnet or mainnet to configure the netowrk
 
 
 The defaults are: 
 
 ```
-LOTUS_GIT_BRANCH=master INSTANCE_TYPE='i4i.2xlarge' ./run_task.sh TASKNAME
+LOTUS_NETWORK=mainnet LOTUS_GIT_BRANCH=master INSTANCE_TYPE='i4i.2xlarge' ./run_task.sh TASKNAME
 ```
+
+this would be equvalent to:
+
+```
+./run_task.sh TASKNAME
+```
+
+a non standard usage of the args to test state invariants on calibnet would be:
+
+```
+LOTUS_NETWORK=calibnet LOTUS_GIT_BRANCH=asr/unbork-calibnet ./run_task.sh state_invariants_check
+```
+
+running a script to create a dump file using lotus using a very large machine:
+
+```
+LOTUS_GIT_BRANCH=my/dev/branch INSTANCE_TYPE='i4i.16xlarge' ./run_task.sh lotus_snapshot
+```
+
+
 
 
 # Tutorial: Using the `add_task.sh` script
