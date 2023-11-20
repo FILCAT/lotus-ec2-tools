@@ -15,8 +15,8 @@ export PATH=$PATH:/usr/local/go/bin
 mkdir -p /mnt/tmp
 export TMPDIR=/mnt/tmp
 
-# Set BRANCH to the value of LOTUS_NETWORK, or to 'mainnet' if LOTUS_NETWORK is not set
-BRANCH=${LOTUS_NETWORK:-mainnet}
+# Set LOTUS_GIT_BRANCH to the value of LOTUS_NETWORK, or to 'mainnet' if LOTUS_NETWORK is not set
+LOTUS_NETWORK=${LOTUS_NETWORK:-mainnet}
 
 # Check the value of LOTUS_NETWORK and execute the appropriate make command(s)
 if [ "$LOTUS_NETWORK" == "mainnet" ]; then
