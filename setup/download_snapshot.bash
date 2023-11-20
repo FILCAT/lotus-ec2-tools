@@ -2,7 +2,7 @@
 set -eux
 
 # Set BRANCH to the value of LOTUS_NETWORK, or to 'mainnet' if LOTUS_NETWORK is not set
-BRANCH=${LOTUS_NETWORK:-mainnet}
+LOTUS_NETWORK=${LOTUS_NETWORK:-mainnet}
 
 # Check if the file already exists, which may be the case if it was uploaded to the server
 # via scp through the SNAPSHOT_PATH environment variable
