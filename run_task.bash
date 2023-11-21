@@ -11,6 +11,8 @@ INSTANCE_ID_FILE=$(mktemp)
 INSTANCE_PUBLIC_DNS="$(cat $INSTANCE_PUBLIC_DNS_FILE)"
 INSTANCE_ID="$(cat $INSTANCE_ID_FILE)"
 
+#we want to terminate server even if the task errors
+set +e
 bash /mnt/lotus-ec2-tools/tasks/"$task_name"/run.bash "$INSTANCE_PUBLIC_DNS" "$task_name"
 
 #terminate instance
