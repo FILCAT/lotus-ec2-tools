@@ -14,5 +14,5 @@ sleep 2m
 /mnt/lotus/lotus daemon --bootstrap=false &
 sleep 2m
 
-/mnt/lotus/lotus chain export --recent-stateroots=1 --skip-old-msgs |pv> /mnt/lotus-data/chain_snapshot.car
+/mnt/lotus/lotus chain export --recent-stateroots=900 --skip-old-msgs /mnt/lotus-data/chain_snapshot.car
 
